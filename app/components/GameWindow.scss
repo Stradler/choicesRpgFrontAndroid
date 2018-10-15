@@ -1,0 +1,23 @@
+.GameWindow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50vh;
+
+  &__name {
+    font-size: 30px;
+  }
+
+  &__stats {
+    font-size: 20px;
+  }
+
+  &__character {
+    min-height: 50px;
+  }
+  &__demon {
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}

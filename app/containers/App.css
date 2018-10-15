@@ -1,0 +1,21 @@
+.App {
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar__custom{
+  margin-bottom: 0;
+}
+
+.main {
+  height: 60vh;
+}
+
+.navbar-nav span[role=button] {
+  padding: 15px;
+  display: inline-block;
+  line-height: 20px;
+}

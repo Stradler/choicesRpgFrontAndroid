@@ -7,11 +7,17 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "native-base": "^2.8.1",
     "react": "16.5.0",
     "react-native": "0.57.2",
     "react-native-router-flux": "^4.0.5",
-    "reactstrap": "^6.5.0"
+    "react-navigation-redux-helpers": "^2.0.6",
+    "react-redux": "^5.0.7",
+    "reactstrap": "^6.5.0",
+    "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
+    "redux-saga": "^0.16.2"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
