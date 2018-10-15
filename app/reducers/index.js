@@ -4,7 +4,7 @@ import {error} from "./error";
 import {fetching} from "./fetching";
 import {survivalEvents} from "./survivalEvents";
 import {currentSurvivalEvent} from "./currentSurvivalEvent";
-import {navReducer} from "../App";
+// import {navReducer} from "../App";
 import * as constants from "../constants";
 
 const ageReducer = function(state = 0.0, action){
@@ -48,5 +48,5 @@ export default combineReducers({
   AGE: ageReducer,
   HP: hpReducer,
   MONEY:moneyReducer,
-  nav: navReducer
+  // nav: navReducer
 });

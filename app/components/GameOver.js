@@ -1,13 +1,11 @@
 import React from "react";
-import {Panel, Grid} from "react-bootstrap";
+import {View, Text, Button} from "react-native";
 const GameOver = (props) => {
   return(
-    <Grid>
-    <Panel>
-      <Panel.Heading>{props.message}</Panel.Heading>
-      <Panel.Body onClick={props.dispatchReset}>Click here to start a new game!</Panel.Body>
-    </Panel>
-    </Grid>
+    <View>
+      <Text>{props.message}</Text>
+      <Button  title="Click here to start a new game!" onPress={props.dispatchReset}/>
+    </View>
   );
 }
 export default GameOver;

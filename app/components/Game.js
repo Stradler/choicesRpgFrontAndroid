@@ -1,10 +1,10 @@
 import React from "react";
 import GameWindow from "./GameWindow";
 import { connect } from "react-redux";
-import "./Game.scss";
 import * as constants from "../constants";
 import * as actions from "../actions";
 import GameOver from "./GameOver";
+import {View} from "react-native";
 class Game extends React.Component {
   componentDidMount(){
     this.props.getSurvivalEvents(0);
@@ -23,7 +23,6 @@ class Game extends React.Component {
     const {
       mainEvents,
       survivalEvents,
-      getSurvivalEvents,
       HP,
       AGE,
       MONEY,
@@ -64,8 +63,8 @@ class Game extends React.Component {
         event.answers[1].reward.effect === "HP" ? changeHP : changeMONEY;
 
       return (
-        <div className="Game">
-          <div>
+        <View>
+          <View>
             <GameWindow
               event={event}
               dispatchFirst={dispatchFirst}
@@ -75,17 +74,17 @@ class Game extends React.Component {
               HP={HP}
               demonGamble={this.demonGamble.bind(this)}
             />
-          </div>
+          </View>
 
           {error && (
-            <p style={{ color: "red" }}>Uh oh - something went wrong!</p>
+            <Text style={{ color: "red" }}>Uh oh - something went wrong!</Text>
           )}
-        </div>
+        </View>
       );
     }
     event = survivalEvents[currentSurvivalEvent];
     if (!event) {
-      return <div>Loading...</div>;
+      return <View>Loading...</View>;
     }
 
     let dispatchFirst =
@@ -94,8 +93,8 @@ class Game extends React.Component {
       event.effect === "HP" ? changeHP : changeMONEY;
     //renderitj gamewindow с текущим survival ивентом из currentEvent
     return (
-      <div className="Game">
-        <div>
+      <View className="Game">
+        <View>
           <GameWindow
             dispatchFirst={dispatchFirst}
             dispatchSecond={dispatchSecond}
@@ -105,10 +104,10 @@ class Game extends React.Component {
             HP={HP}
             demonGamble={this.demonGamble.bind(this)}
           />
-        </div>
+        </View>
 
-        {error && <p style={{ color: "red" }}>Uh oh - something went wrong!</p>}
-      </div>
+        {error && <Text style={{ color: "red" }}>Uh oh - something went wrong!</Text>}
+      </View>
     );
   }
 }
