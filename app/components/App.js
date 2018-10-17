@@ -44,11 +44,14 @@ class DrawerList extends React.Component {
   }
 }
 class App extends React.Component {
-  componentDidMount() {
-    this.props.onRequestEvents();
-  }
   render() {
     const { events, error, fetching } = this.props;
+    if (!events || events.length === 0) {
+      setTimeout(() => {
+        this.props.onRequestEvents();
+      }, 3000);
+      return <Text>Loading...</Text>;
+    }
     return (
       <Container>
         <Header style={{ height: 10, borderBottomColor: "white" }} />
