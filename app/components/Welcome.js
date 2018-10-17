@@ -11,7 +11,7 @@ const Welcome = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginTop: 250
+        marginTop: 150
       }}
     >
       <Text
