@@ -1,14 +1,14 @@
-import {combineReducers} from "redux";
-import {mainEvents} from "./mainEvents";
-import {error} from "./error";
-import {fetching} from "./fetching";
-import {survivalEvents} from "./survivalEvents";
-import {currentSurvivalEvent} from "./currentSurvivalEvent";
+import { combineReducers } from "redux";
+import { mainEvents } from "./mainEvents";
+import { error } from "./error";
+import { fetching } from "./fetching";
+import { survivalEvents } from "./survivalEvents";
+import { currentSurvivalEvent } from "./currentSurvivalEvent";
 // import {navReducer} from "../App";
 import * as constants from "../constants";
 
-const ageReducer = function(state = 0.0, action){
-  switch(action.type){
+const ageReducer = function(state = 0.0, action) {
+  switch (action.type) {
     case constants.CHANGE_AGE:
       return action.payload.age;
     case constants.RESET_GAME:
@@ -16,10 +16,10 @@ const ageReducer = function(state = 0.0, action){
     default:
       return state;
   }
-}
+};
 
-const hpReducer = function(state = 50, action){
-  switch(action.type){
+const hpReducer = function(state = 50, action) {
+  switch (action.type) {
     case constants.CHANGE_HP:
       return action.payload.hp + state;
     case constants.RESET_GAME:
@@ -27,19 +27,18 @@ const hpReducer = function(state = 50, action){
     default:
       return state;
   }
-}
+};
 
-
-const moneyReducer = function(state = 0, action){
-  switch(action.type){
+const moneyReducer = function(state = 0, action) {
+  switch (action.type) {
     case constants.CHANGE_MONEY:
       return action.payload.money + state;
-      case constants.RESET_GAME:
+    case constants.RESET_GAME:
       return 0;
     default:
       return state;
   }
-}
+};
 export default combineReducers({
   mainEvents,
   error,
@@ -47,6 +46,6 @@ export default combineReducers({
   survivalEvents,
   AGE: ageReducer,
   HP: hpReducer,
-  MONEY:moneyReducer,
+  MONEY: moneyReducer
   // nav: navReducer
 });

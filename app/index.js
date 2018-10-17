@@ -31,7 +31,7 @@ class Main extends React.Component {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <App/>
+          <App />
         </PersistGate>
       </Provider>
     );

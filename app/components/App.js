@@ -62,10 +62,9 @@ class App extends React.Component {
               <Scene key="welcome" component={Welcome} hideNavBar={false} />
               <Scene
                 key="game"
-                component={Game}
-                mainEvents={events}
-                error={error}
-                fetching={fetching}
+                component={() => (
+                  <Game mainEvents={events} error={error} fetching={fetching} />
+                )}
               />
             </Scene>
           </Drawer>
