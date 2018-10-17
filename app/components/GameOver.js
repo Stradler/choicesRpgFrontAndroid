@@ -1,11 +1,20 @@
 import React from "react";
-import {View, Text, Button} from "react-native";
-const GameOver = (props) => {
-  return(
-    <View>
+import { View } from "react-native";
+import { Text, Button } from "native-base";
+import { styles } from "./styles";
+const GameOver = props => {
+  return (
+    <View style={styles.gamewindow}>
       <Text>{props.message}</Text>
-      <Button  title="Click here to start a new game!" onPress={props.dispatchReset}/>
+      <View>
+        <Button
+          title="Click here to start a new game!"
+          onPress={props.dispatchReset}
+        >
+          <Text>Начать заново!</Text>
+        </Button>
+      </View>
     </View>
   );
-}
+};
 export default GameOver;

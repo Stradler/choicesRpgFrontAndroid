@@ -1,24 +1,35 @@
 import React from "react";
 import { version } from "../../app.json";
-import { Button, Text, View } from "react-native";
-import {Actions} from "react-native-router-flux";
+import { View } from "react-native";
+import { Button, Text } from "native-base";
+import { Actions } from "react-native-router-flux";
 
 const Welcome = () => {
   return (
-    <View style={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-around"
-    }
-    }>
-      <Text style={{
-        fontSize: 40
-      }}>Choices Rpg</Text>
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: 250
+      }}
+    >
+      <Text
+        style={{
+          fontSize: 40
+        }}
+      >
+        Choices Rpg
+      </Text>
       <Text>
         v.
         {version}
       </Text>
-      <Button title="Play!" onPress={() => Actions.game()} />
+      <View>
+        <Button title="Play!" onPress={() => Actions.game()}>
+          <Text>Играть!</Text>
+        </Button>
+      </View>
     </View>
   );
 };
