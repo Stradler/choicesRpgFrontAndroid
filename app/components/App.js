@@ -11,10 +11,10 @@ import {
   Header,
   Body,
   Title,
-  Button
+  Button,
+  Content
 } from "native-base";
 import { FlatList } from "react-native";
-import SideMenu from "react-native-side-menu";
 const ReduxRouter = connect()(Router);
 
 class DrawerList extends React.Component {
@@ -52,7 +52,6 @@ class App extends React.Component {
     return (
       <Container>
         <Header style={{ height: 10, borderBottomColor: "white" }} />
-
         <ReduxRouter>
           <Drawer
             key="homeview"

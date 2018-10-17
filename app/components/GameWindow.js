@@ -1,16 +1,24 @@
 import React from "react";
 import hero from "../images/characters/2.png";
 import devil from "../images/monster/devil.png";
-import { View } from "react-native";
-import { Content, Button, Text } from "native-base";
+import { View, Dimensions } from "react-native";
+import { Button, Text } from "native-base";
 import { styles } from "./styles";
+import * as Animatable from "react-native-animatable";
 
 class GameWindow extends React.Component {
   render() {
     const { event } = this.props;
     return (
       <View style={styles.gamewindow}>
-        <Text className="GameWindow__name">{event.name}</Text>
+        <Animatable.Text
+          animation="pulse"
+          easing="ease-out"
+          iterationCount="infinite"
+          style={{ textAlign: "center", fontSize: 30, marginBottom: 10 }}
+        >
+          {event.name}
+        </Animatable.Text>
         <View style={{ flexDirection: "row" }}>
           <Button
             onPress={() => {
@@ -22,6 +30,7 @@ class GameWindow extends React.Component {
               }
             }}
             title={event.answers[0].answer_name}
+            style={{ marginRight: 20 }}
           >
             <Text>{event.answers[0].answer_name}</Text>
           </Button>
@@ -42,8 +51,18 @@ class GameWindow extends React.Component {
           </Button>
         </View>
 
-        <Text>HP: {this.props.HP}</Text>
-        <Text>MONEY: {this.props.MONEY}</Text>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: 30,
+            width: Dimensions.get("window").width
+          }}
+        >
+          <Text>HP: {this.props.HP}</Text>
+          <Text>Деньги: {this.props.MONEY}</Text>
+        </View>
       </View>
     );
   }
