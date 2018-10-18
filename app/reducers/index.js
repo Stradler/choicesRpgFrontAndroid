@@ -10,6 +10,11 @@ import * as constants from "../constants";
 const ageReducer = function(state = 0.0, action) {
   switch (action.type) {
     case constants.CHANGE_AGE:
+      const AGE = action.payload.age;
+      const currentMonth = (AGE - Math.floor(AGE)) * 10;
+      if (currentMonth >= 5) {
+        return Math.floor(AGE) + 1.0;
+      }
       return action.payload.age;
     case constants.RESET_GAME:
       return 0.0;
