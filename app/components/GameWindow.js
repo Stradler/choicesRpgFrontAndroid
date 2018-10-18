@@ -10,11 +10,14 @@ class GameWindow extends React.Component {
   constructor(props) {
     super(props);
     this.view = React.createRef();
+    this.mounted = false;
   }
   componentDidMount() {
+    this.mounted = true;
     this.view.lightSpeedIn(500);
   }
   componentWillUnmount() {
+    this.mounted = false;
     this.view = null;
   }
 
@@ -45,7 +48,7 @@ class GameWindow extends React.Component {
                 } else {
                   dispatchFirst(event.answers[0].reward.power);
                 }
-                view.lightSpeedIn(500);
+                if (this.mounted) view.lightSpeedIn(500);
               });
             }}
             title={event.answers[0].answer_name}
@@ -65,7 +68,7 @@ class GameWindow extends React.Component {
                 } else {
                   dispatchSecond(event.answers[1].reward.power);
                 }
-                view.lightSpeedIn(500);
+                if (this.mounted) view.lightSpeedIn(500);
               });
             }}
             title={event.answers[1].answer_name}
