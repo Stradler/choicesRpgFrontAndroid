@@ -3,21 +3,22 @@ import GameWindow from "./GameWindow";
 import { connect } from "react-redux";
 import * as constants from "../constants";
 import * as actions from "../actions";
+import * as Animatable from "react-native-animatable";
 import GameOver from "./GameOver";
-import {View} from "react-native";
+import { View } from "react-native";
+
 class Game extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getSurvivalEvents(0);
   }
-  demonGamble(){
-    let notice = Math.floor(Math.random()*2);
-    if(notice){
-      alert("Демон заметил ваше присутсвие! Все ваши деньги пропали :(")
+  demonGamble() {
+    let notice = Math.floor(Math.random() * 2);
+    if (notice) {
+      alert("Демон заметил ваше присутсвие! Все ваши деньги пропали :(");
       return this.props.changeMONEY(-this.props.MONEY);
     }
     alert("Демон продолжает спать. +2 денег");
     return this.props.changeMONEY(2);
-
   }
   render() {
     const {
@@ -36,25 +37,32 @@ class Game extends React.Component {
     // Game oVer Logic
     if (HP <= 0 || MONEY < 0) {
       return (
-       <GameOver dispatchReset={resetGame} message="Вы погибли. Или из-за долгов или из-за здоровья"/>
+        <GameOver
+          dispatchReset={resetGame}
+          message="Вы погибли. Или из-за долгов или из-за здоровья"
+        />
       );
     }
     if (HP > 100 || MONEY > 10000) {
       return (
-        <GameOver dispatchReset={resetGame} message="У вас слишком много всего! Так не пойдет!" />
+        <GameOver
+          dispatchReset={resetGame}
+          message="У вас слишком много всего! Так не пойдет!"
+        />
       );
     }
     let event = mainEvents[Math.floor(AGE)];
     if (!event) {
       return (
-        <GameOver dispatchReset={resetGame} message={`Вы победили. Вы прожили: ${Math.floor(AGE)} лет. Заработали: ${MONEY}$. Нажмите ниже, чтобы начать заново!`} />
+        <GameOver
+          dispatchReset={resetGame}
+          message={`Вы победили. Вы прожили: ${Math.floor(
+            AGE
+          )} лет. Заработали: ${MONEY}$. Нажмите ниже, чтобы начать заново!`}
+        />
       );
     }
     const currentMonth = (AGE - Math.floor(AGE)) * 10;
-
-    if (currentMonth >= 5) {
-      changeAGE(Math.floor(AGE) + 1.0);
-    }
 
     if (currentMonth === 0) {
       let dispatchFirst =
@@ -69,7 +77,7 @@ class Game extends React.Component {
               event={event}
               dispatchFirst={dispatchFirst}
               dispatchSecond={dispatchSecond}
-              dispatchAge={changeAGE.bind(null, AGE+0.1)}
+              dispatchAge={changeAGE.bind(null, AGE + 0.1)}
               MONEY={MONEY}
               HP={HP}
               demonGamble={this.demonGamble.bind(this)}
@@ -87,10 +95,8 @@ class Game extends React.Component {
       return <View>Loading...</View>;
     }
 
-    let dispatchFirst =
-      event.effect === "HP" ? changeHP : changeMONEY;
-    let dispatchSecond =
-      event.effect === "HP" ? changeHP : changeMONEY;
+    let dispatchFirst = event.effect === "HP" ? changeHP : changeMONEY;
+    let dispatchSecond = event.effect === "HP" ? changeHP : changeMONEY;
     //renderitj gamewindow с текущим survival ивентом из currentEvent
     return (
       <View className="Game">
@@ -98,7 +104,7 @@ class Game extends React.Component {
           <GameWindow
             dispatchFirst={dispatchFirst}
             dispatchSecond={dispatchSecond}
-            dispatchAge={changeAGE.bind(null, AGE+0.1)}
+            dispatchAge={changeAGE.bind(null, AGE + 0.1)}
             event={event}
             MONEY={MONEY}
             HP={HP}
@@ -106,7 +112,9 @@ class Game extends React.Component {
           />
         </View>
 
-        {error && <Text style={{ color: "red" }}>Uh oh - something went wrong!</Text>}
+        {error && (
+          <Text style={{ color: "red" }}>Uh oh - something went wrong!</Text>
+        )}
       </View>
     );
   }
