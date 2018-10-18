@@ -4973,7 +4973,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -5170,6 +5170,13 @@ react-native-tab-view@^1.0.0:
   integrity sha512-lpiWi3dog86Fu/W60DU12RKrFv3XuTv0lHMC56t2jlDqxLfVzG9ufV7li6Afl2S2ZicNU1Bob8WPgxVZc8egAA==
   dependencies:
     prop-types "^15.6.1"
+
+react-native-typewriter@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-typewriter/-/react-native-typewriter-0.5.3.tgz#c8477e6227f69f3deeefeb128b06088672d18c6a"
+  integrity sha512-Etb8x1uB1JjFBj4jqaI1h8asszoiEDiQTuMc58ZPnB8Qv7+UcY1iBphmbKVcyoWelsTDIo1r8kIjL5Yl/OMDQQ==
+  dependencies:
+    prop-types "^15.5.7"
 
 react-native-vector-icons@4.6.0:
   version "4.6.0"
