@@ -11,12 +11,22 @@ class GameWindow extends React.Component {
     super(props);
     this.view = React.createRef();
   }
-  async componentDidMount() {
-    await this.view.lightSpeedIn(500);
+  componentDidMount() {
+    this.view.lightSpeedIn(500);
+  }
+  componentWillUnmount() {
+    this.view = null;
   }
 
   render() {
-    const { event } = this.props;
+    const {
+      event,
+      dispatchFirst,
+      dispatchSecond,
+      dispatchAge,
+      HP,
+      MONEY
+    } = this.props;
     return (
       <Animatable.View style={styles.gamewindow} ref={el => (this.view = el)}>
         <Animatable.Text
@@ -27,14 +37,15 @@ class GameWindow extends React.Component {
         <View style={{ flexDirection: "row" }}>
           <Button
             onPress={() => {
-              this.view.lightSpeedOut(500).then(() => {
-                this.props.dispatchAge();
+              let view = this.view;
+              view.lightSpeedOut(500).then(() => {
+                dispatchAge();
                 if (event.effect) {
-                  this.props.dispatchFirst(event.answers[0].power);
+                  dispatchFirst(event.answers[0].power);
                 } else {
-                  this.props.dispatchFirst(event.answers[0].reward.power);
+                  dispatchFirst(event.answers[0].reward.power);
                 }
-                this.view.lightSpeedIn(500);
+                view.lightSpeedIn(500);
               });
             }}
             title={event.answers[0].answer_name}
@@ -46,14 +57,15 @@ class GameWindow extends React.Component {
             bsSize="lg"
             bsStyle="warning"
             onPress={() => {
-              this.view.lightSpeedOut(500).then(() => {
-                this.props.dispatchAge();
+              let view = this.view;
+              view.lightSpeedOut(500).then(() => {
+                dispatchAge();
                 if (event.effect) {
-                  this.props.dispatchSecond(event.answers[1].power);
+                  dispatchSecond(event.answers[1].power);
                 } else {
-                  this.props.dispatchSecond(event.answers[1].reward.power);
+                  dispatchSecond(event.answers[1].reward.power);
                 }
-                this.view.lightSpeedIn(500);
+                view.lightSpeedIn(500);
               });
             }}
             title={event.answers[1].answer_name}
@@ -71,8 +83,8 @@ class GameWindow extends React.Component {
             width: Dimensions.get("window").width
           }}
         >
-          <Text>HP: {this.props.HP}</Text>
-          <Text>Деньги: {this.props.MONEY}</Text>
+          <Text>HP: {HP}</Text>
+          <Text>Деньги: {MONEY}</Text>
         </View>
       </Animatable.View>
     );
