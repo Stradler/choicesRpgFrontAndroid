@@ -80,6 +80,7 @@ class Game extends React.Component {
               dispatchAge={changeAGE.bind(null, AGE + 0.1)}
               MONEY={MONEY}
               HP={HP}
+              AGE={Math.floor(AGE)}
               demonGamble={this.demonGamble.bind(this)}
             />
           </View>
@@ -108,6 +109,7 @@ class Game extends React.Component {
             event={event}
             MONEY={MONEY}
             HP={HP}
+            AGE={Math.floor(AGE)}
             demonGamble={this.demonGamble.bind(this)}
           />
         </View>

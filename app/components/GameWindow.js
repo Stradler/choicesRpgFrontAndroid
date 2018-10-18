@@ -28,15 +28,15 @@ class GameWindow extends React.Component {
       dispatchSecond,
       dispatchAge,
       HP,
-      MONEY
+      MONEY,
+      AGE
     } = this.props;
     return (
       <Animatable.View style={styles.gamewindow} ref={el => (this.view = el)}>
-        <Animatable.Text
-          style={{ textAlign: "center", fontSize: 30, marginBottom: 10 }}
-        >
+        <Text style={{ flexBasis: 80 }}>Возраст: {AGE || "0"}</Text>
+        <Text style={{ textAlign: "center", fontSize: 30, marginBottom: 10 }}>
           {event.name}
-        </Animatable.Text>
+        </Text>
         <View style={{ flexDirection: "row" }}>
           <Button
             onPress={() => {
@@ -52,11 +52,14 @@ class GameWindow extends React.Component {
               });
             }}
             title={event.answers[0].answer_name}
-            style={{ marginRight: 20 }}
+            style={[{ marginRight: 20 }, styles.choiceButton]}
           >
-            <Text>{event.answers[0].answer_name}</Text>
+            <Text style={styles.choiceButton__text}>
+              {event.answers[0].answer_name}
+            </Text>
           </Button>
           <Button
+            style={styles.choiceButton}
             bsSize="lg"
             bsStyle="warning"
             onPress={() => {
@@ -73,7 +76,9 @@ class GameWindow extends React.Component {
             }}
             title={event.answers[1].answer_name}
           >
-            <Text>{event.answers[1].answer_name}</Text>
+            <Text style={styles.choiceButton__text}>
+              {event.answers[1].answer_name}
+            </Text>
           </Button>
         </View>
 
