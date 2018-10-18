@@ -4,8 +4,17 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "flex-end",
     width: Dimensions.get("window").width,
-    marginTop: Dimensions.get("window").height / 3
+    marginTop: Dimensions.get("window").height / 5
+  },
+  choiceButton: {
+    flexGrow: 1,
+    height: 100,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  choiceButton__text: {
+    fontSize: 40
   }
 });
