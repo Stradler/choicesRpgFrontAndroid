@@ -12,13 +12,22 @@ class GameOver extends React.Component {
     const props = this.props;
     return (
       <Animatable.View ref={ref => (this.view = ref)} style={styles.gamewindow}>
-        <TypeWriter
-          style={{ textAlign: "center", fontSize: 30, marginBottom: 10 }}
-          typing={1}
-          maxDelay={50}
-        >
-          {props.message}
-        </TypeWriter>
+        <View>
+          <Text
+            style={{
+              fontSize: 25,
+              marginBottom: 10,
+              color: "black",
+              textAlign: "center"
+            }}
+            typing={1}
+            maxDelay={50}
+          >
+            <TypeWriter typing={1} maxDelay={50}>
+              {props.message}
+            </TypeWriter>
+          </Text>
+        </View>
         <View>
           <Button
             title="Click here to start a new game!"
