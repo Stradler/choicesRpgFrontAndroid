@@ -44,6 +44,33 @@ const moneyReducer = function(state = 0, action) {
       return state;
   }
 };
+
+const token = function(state = "", action) {
+  switch (action.type) {
+    case "API_CALL_SIGNUP_SUCCES":
+      return action.token;
+    case "API_CALL_LOGIN_SUCCESS":
+      return action.token;
+    case "API_CALL_LOGIN_FAILURE":
+      return action.kek;
+    default:
+      return state;
+  }
+};
+
+const userId = function(state = "", action) {
+  switch (action.type) {
+    case "API_CALL_SIGNUP_SUCCES":
+      return action._id;
+    case "API_CALL_LOGIN_SUCCES":
+      return action._id;
+    case "API_CALL_LOGIN_FAILURE":
+      return action.kek;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   mainEvents,
   error,
@@ -51,6 +78,8 @@ export default combineReducers({
   survivalEvents,
   AGE: ageReducer,
   HP: hpReducer,
-  MONEY: moneyReducer
+  MONEY: moneyReducer,
+  token,
+  userId
   // nav: navReducer
 });
