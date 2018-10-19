@@ -18,7 +18,6 @@ class GameWindow extends React.Component {
   }
   componentWillUnmount() {
     this.mounted = false;
-    this.view = null;
   }
 
   render() {
