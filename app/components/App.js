@@ -4,6 +4,8 @@ import Welcome from "./Welcome";
 import Game from "./Game";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import getTheme from "./native-base-theme/components";
+import commonColor from "./native-base-theme/variables/commonColor";
 import {
   Container,
   Footer,
@@ -12,7 +14,8 @@ import {
   Body,
   Title,
   Button,
-  Content
+  Content,
+  StyleProvider
 } from "native-base";
 import { FlatList } from "react-native";
 const ReduxRouter = connect()(Router);
@@ -23,15 +26,16 @@ class DrawerList extends React.Component {
       <FlatList
         style={{
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
+          marginTop: 30
         }}
         data={[
-          { key: "welcome", name: "Home", icon: "home" },
-          { key: "game", name: "Play", icon: "play" }
+          { key: "welcome", name: "Домой", icon: "home" },
+          { key: "game", name: "Играть", icon: "play" }
         ]}
         renderItem={({ item }) => (
           <Button
-            style={{ marginBottom: 5 }}
+            style={{ marginBottom: 20 }}
             full
             onPress={() => Actions[item.key]()}
           >
@@ -53,29 +57,35 @@ class App extends React.Component {
       return <Text>Loading...</Text>;
     }
     return (
-      <Container>
-        <Header style={{ height: 10, borderBottomColor: "white" }} />
-        <ReduxRouter>
-          <Drawer
-            key="homeview"
-            contentComponent={DrawerList}
-            drawerIcon={<Icon name="eye" size={40} color="steelblue" />}
-          >
-            <Scene key="root" hideNavBar={false}>
-              <Scene key="welcome" component={Welcome} hideNavBar={false} />
-              <Scene
-                key="game"
-                component={() => (
-                  <Game mainEvents={events} error={error} fetching={fetching} />
-                )}
-              />
-            </Scene>
-          </Drawer>
-        </ReduxRouter>
-        <Footer>
-          <Text>2018</Text>
-        </Footer>
-      </Container>
+      <StyleProvider style={getTheme(commonColor)}>
+        <Container>
+          <Header style={{ height: 10, borderBottomColor: "white" }} />
+          <ReduxRouter>
+            <Drawer
+              key="homeview"
+              contentComponent={DrawerList}
+              drawerIcon={<Icon name="eye" size={40} color="steelblue" />}
+            >
+              <Scene key="root" hideNavBar={false}>
+                <Scene key="welcome" component={Welcome} hideNavBar={false} />
+                <Scene
+                  key="game"
+                  component={() => (
+                    <Game
+                      mainEvents={events}
+                      error={error}
+                      fetching={fetching}
+                    />
+                  )}
+                />
+              </Scene>
+            </Drawer>
+          </ReduxRouter>
+          <Footer>
+            <Text>2018</Text>
+          </Footer>
+        </Container>
+      </StyleProvider>
     );
   }
 }
